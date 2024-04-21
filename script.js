@@ -1,12 +1,12 @@
 const library = [];
 
-function Book(title, author, numPages, hasRead) {
+function Book(title, author, pageCount, hasRead) {
     this.title = title;
     this.author = author;
-    this.numPages = numPages;
+    this.pageCount = pageCount;
     this.hasRead = hasRead;
 }
 
 function addBookToLibrary() {
-    
+
 }

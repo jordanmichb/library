@@ -16,14 +16,58 @@ header {
 
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, clamp(300px, 20%, 400px));
+    gap: 20px;
+
+    padding: 20px;
 }
 
 /* * * * * * * * * * * * *
 * Card
 * * * * * * * * * * * * * */
 .card {
+    padding: 20px;
+    min-height: 300px;
+}
 
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    word-break: break-word;
+
+    border-radius: 5px;
+}
+
+.card p {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.delete-btn {
+    margin-left: auto;
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 350ms;
+
+    font-size: 1.5rem;
+}
+
+.delete-btn:hover {
+    transform: scale(1.5);
+}
+
+.book-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.author {
+    font-size: 1.2rem;
 }
 
 /*
@@ -35,4 +79,9 @@ body, header {
 }
 main {
     border: 1px solid green;
+}
+
+.book {
+    background-color: antiquewhite; 
+    border: 1px solid black;
 }
