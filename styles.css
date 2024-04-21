@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* * * * * * * * * * * * *
+* Card
+* * * * * * * * * * * * * */
+.card {
+
+}
+
+/*
+* VISUAL ASSISTANCE
+*/
+
+body, header {
+    border: 1px solid red;
+}
+main {
+    border: 1px solid green;
+}
