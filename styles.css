@@ -1,44 +1,130 @@
+@font-face {
+    font-family: 'roboto';
+    src: url('./fonts/roboto-regular-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('./fonts/roboto-medium-webfont.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('./fonts/roboto-bold-webfont.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'roboto';
 }
 
 body {
     min-height: 100vh;
-}
 
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
 }
 
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, clamp(300px, 20%, 400px));
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 400px));
     gap: 20px;
 
     padding: 20px;
+}
+
+button {
+    /* font-family: 'roboto'; */
+}
+
+svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* * * * * * * * * * * * *
+* Header
+* * * * * * * * * * * * * */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+header svg {
+    vertical-align: middle;
+}
+
+.login {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+/* * * * * * * * * * * * *
+* Aside
+* * * * * * * * * * * * * */
+.info {
+    position: absolute;
+    padding: 20px;
+    width: 200px;
+}
+
+.info h2 {
+    margin-bottom: 10px;
+}
+
+.info ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+/* * * * * * * * * * * * *
+* Library
+* * * * * * * * * * * * * */
+.library {
+    /* display: inline-block; */
 }
 
 /* * * * * * * * * * * * *
 * Card
 * * * * * * * * * * * * * */
 .card {
-    padding: 20px;
-    min-height: 300px;
+    padding: 10px;
+    padding-bottom: 0;
+    min-height: 100px;
 }
 
 .book {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     word-break: break-word;
 
     border-radius: 5px;
+    min-height: 400px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .card p {
@@ -47,14 +133,14 @@ main {
 }
 
 .delete-btn {
-    margin-left: auto;
+    align-self: end;
     
     background: none;
     border: none;
     cursor: pointer;
     transition: transform 350ms;
 
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .delete-btn:hover {
@@ -62,19 +148,26 @@ main {
 }
 
 .book-title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 .author {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 10px;
+}
+
+.has-read {
+    font-size: .8rem;
+    align-self: end;
 }
 
 /*
 * VISUAL ASSISTANCE
 */
 
-body, header {
+body, header, aside {
     border: 1px solid red;
 }
 main {
