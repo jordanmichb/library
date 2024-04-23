@@ -33,12 +33,6 @@ body {
 
 main {
     display: flex;
-    /* grid-auto-flow: column;
-    grid-template-columns: 200px 1fr; */
-}
-
-button {
-    /* font-family: 'roboto'; */
 }
 
 svg {
