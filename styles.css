@@ -32,12 +32,9 @@ body {
 }
 
 main {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 400px));
-    gap: 20px;
-
-    padding: 20px;
+    display: flex;
+    /* grid-auto-flow: column;
+    grid-template-columns: 200px 1fr; */
 }
 
 button {
@@ -57,9 +54,10 @@ header {
     justify-content: center;
     align-items: center;
     padding: 1rem;
+
 }
 
-.menu {
+.menu-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -79,9 +77,9 @@ header svg {
 * Aside
 * * * * * * * * * * * * * */
 .info {
-    position: absolute;
     padding: 20px;
     width: 200px;
+    transition: width 350ms, padding 400ms;
 }
 
 .info h2 {
@@ -93,13 +91,25 @@ header svg {
     margin-bottom: 20px;
 }
 
+.info.collapsed {
+    width: 0;
+    padding: 0;
+    opacity: 0;
+}
+
 /* * * * * * * * * * * * *
 * Library
 * * * * * * * * * * * * * */
 .library {
-    /* display: inline-block; */
-}
+    flex: 1;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 400px));
+    gap: 20px;
 
+    padding: 20px;
+    transition: transform 350ms;
+}
 /* * * * * * * * * * * * *
 * Card
 * * * * * * * * * * * * * */
@@ -170,7 +180,7 @@ header svg {
 body, header, aside {
     border: 1px solid red;
 }
-main {
+.library {
     border: 1px solid green;
 }
 
