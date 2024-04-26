@@ -19,6 +19,15 @@
     font-style: normal;
 }
 
+:root {
+    --header-background-color: none;
+    --aside-background-color: none;
+    --library-background-color: none;
+    --card-background-color: none;
+    --card-border-color: black;
+    --text-color: black;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -48,7 +57,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 1rem;
-
+    background-color: var(--header-background-color)
 }
 
 .menu-btn {
@@ -73,7 +82,8 @@ header svg {
 .info {
     padding: 20px;
     width: 200px;
-    transition: width 350ms, padding 400ms;
+    transition: width 350ms, padding 350ms, opacity 350ms;
+    background-color: var(--aside-background-color);
 }
 
 .info h2 {
@@ -83,6 +93,10 @@ header svg {
 .info ul {
     list-style: none;
     margin-bottom: 20px;
+}
+
+.info li {
+    white-space: nowrap;
 }
 
 .info.collapsed {
@@ -100,13 +114,17 @@ header svg {
     justify-content: center;
     grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 400px));
     gap: 20px;
-
+    background-color: var(--library-background-color);
     padding: 20px;
     transition: transform 350ms;
 }
 /* * * * * * * * * * * * *
 * Card
 * * * * * * * * * * * * * */
+.add-book {
+    cursor: pointer;
+}
+
 .card {
     padding: 10px;
     padding-bottom: 0;
@@ -120,7 +138,8 @@ header svg {
     justify-content: space-between;
     flex-wrap: wrap;
     word-break: break-word;
-
+    background-color: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 5px;
     min-height: 400px;
 }
@@ -176,9 +195,4 @@ body, header, aside {
 }
 .library {
     border: 1px solid green;
-}
-
-.book {
-    background-color: antiquewhite; 
-    border: 1px solid black;
 }
