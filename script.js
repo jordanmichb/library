@@ -3,7 +3,7 @@ const menuBtn = document.querySelector(".menu-btn");
 const library = document.querySelector(".library");
 
 menuBtn.addEventListener('click', () => {
-    info.classList.toggle('collapsed');
+    info.classList.toggle('expand');
 })
 
 const booksList = [];
@@ -61,5 +61,5 @@ function displayBooks() {
     }
 }
 
-displayBooks();
+//displayBooks();
 
