@@ -1,6 +1,6 @@
 const info = document.querySelector(".info");
 const menuBtn = document.querySelector(".menu-btn");
-const library = document.querySelector(".library");
+const bookcase = document.querySelector(".bookcase");
 
 menuBtn.addEventListener('click', () => {
     info.classList.toggle('expand');
@@ -28,38 +28,42 @@ function addBookToLibrary(book) {
 
 function displayBooks() {
     for (const book of booksList) {
-        const newBook = document.createElement("div");
+        const newBook = document.createElement("tr");
         newBook.classList.add('book', 'card');
 
+        const title = document.createElement('th');
+        title.setAttribute('scope', 'row');
+        title.classList.add('book-title');
+        title.textContent = book.title;
+
+        const author = document.createElement('td');
+        author.classList.add('author');
+        author.textContent = book.author;
+
+        const pageCount = document.createElement('td');
+        pageCount.classList.add('page-count');
+        pageCount.textContent = book.pageCount;
+
+        const hasRead = document.createElement('td');
+        hasRead.classList.add('has-read');
+        hasRead.textContent = book.hasRead ? 'Completed' : 'Not Finished';
+
+        const del = document.createElement('td');
         const button = document.createElement('button');
         button.setAttribute('type', 'button');
         button.classList.add('delete-btn');
 
-        const title = document.createElement('p');
-        title.classList.add('book-title');
-        title.textContent = book.title;
+        del.appendChild(button);
 
-        const author = document.createElement('p');
-        author.classList.add('author');
-        author.textContent = book.author;
-
-        const pageCount = document.createElement('p');
-        pageCount.classList.add('page-count');
-        pageCount.textContent = book.pageCount;
-
-        const hasRead = document.createElement('p');
-        hasRead.classList.add('has-read');
-        hasRead.textContent = book.hasRead ? 'Completed' : 'Not Finished';
-
-        newBook.appendChild(button);
         newBook.appendChild(title);
         newBook.appendChild(author);
         newBook.appendChild(pageCount);
         newBook.appendChild(hasRead);
+        newBook.appendChild(del);
 
-        library.appendChild(newBook);
+        bookcase.appendChild(newBook);
     }
 }
 
-//displayBooks();
+displayBooks();
 
