@@ -118,11 +118,36 @@ header svg {
 }
 
 /* * * * * * * * * * * * *
+* Add Book Button
+* * * * * * * * * * * * * */
+.add-btn {
+    align-self: end;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    border: none;
+    background: none;
+}
+
+.add-btn svg {
+    cursor: pointer;
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* * * * * * * * * * * * *
 * Library
 * * * * * * * * * * * * * */
-.library {
-    margin: 50px 100px;
+.library-container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.library {
+    margin: 0 100px 50px 100px;
+    /* flex: 1; */
+    flex: 0;
     height: 100%;
 }
 
@@ -142,9 +167,6 @@ thead th, td {
 /* * * * * * * * * * * * *
 * Card
 * * * * * * * * * * * * * */
-.add-book {
-    cursor: pointer;
-}
 
 .card {
 

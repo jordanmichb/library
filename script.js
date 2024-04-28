@@ -8,29 +8,62 @@ const pagesRead = document.querySelector('#pages-read');
 const pagesUnread = document.querySelector('#pages-unread');
 const totalGenres = document.querySelector('#total-genres');
 
-const stats = new Map([
-    ['totalBooks', 0],
-    ['booksRead', 0],
-    ['booksUnread', 0],
-    ['totalPages', 0],
-    ['pagesRead', 0],
-    ['pagesUnread', 0],
-    ['totalGenres', 0],
+// Stats object to keep track of all stats
+const stats = {
+    totalBooks:  0,
+    booksRead: 0,
+    booksUnread: 0,
+    totalPages: 0,
+    pagesRead: 0,
+    pagesUnread: 0,
+    totalGenres: 0,
 
-]);
+};
 
+const genres = [];
+
+/*
+* Take a book and update stats based on book object properties
+*/
 function updateStats(book) {
-    stats.set('totalBooks', stats.get('totalBooks') + 1);
-    book.hasRead ? stats.set('booksRead', stats.get('booksRead') + 1)
-                 : stats.set('booksUnread', stats.get('booksUnread') + 1);
-    stats.set('totalPages', stats.get('totalBooks') + book.pageCount);
+    // Increment total books
+    stats.totalBooks = stats.totalBooks++;
+    // Increment read or unread depending on status
+    book.hasRead ? stats.booksRead = stats.booksRead++
+                 : stats.booksUnread = stats.booksUnread++;
+    // Add page count to total pages
+    stats.totalPAges = stats.totalPages + book.pageCount;
+    // Increment read or unread depending on status
+    book.hasRead ? stats.pagesRead = stats.pagesRead + book.pageCount
+                 : stats.pagesUnread = stats.pagesUnread + book.pageCount
+    // Add genre if new and increment total genres
+    if (!genres.includes(book.genre)) {
+        genres.push(book.genre);
+        stats.totalGenre = stats.totalGenres + 1;
+    }
 }
 
+/*
+* Change each stats DOM element to display current stats
+*/
+function displayStats() {
+    totalBooks.innerText = stats.totalBooks;
+    booksRead.innerText = stats.booksRead;
+    booksUnread.innerText = stats.booksUnread;
+    totalPages.innerText = stats.totalPages;
+    pagesRead.innerText = stats.pagesRead;
+    pagesUnread.innerText = stats.pagesUnread;
+    totalGenres.innerText = stats.totalGenres;
+}
 
+/*
+* Add click event listener to menu button to show or hide the sidebar
+*/
 menuBtn.addEventListener('click', () => {
     info.classList.toggle('expand');
 })
 
+// List of all books in the library
 const booksList = [];
 
 function Book(title, author, pageCount, genre, hasRead) {
@@ -54,27 +87,12 @@ booksList.push(book4);
 booksList.push(book5);
 booksList.push(book6);
 
+
 function addBookToLibrary(book) {
-    updateStats(book);
     booksList.push(book);
 }
 
 
-// function getStats() {
-//     let numBooks = 0; let numBooksRead = 0;
-//     let numBooksUnread = 0; let numPages = 0;
-//     let numPagesRead = 0; let numPagesUnread = 0;
-//     let numGenres = 0;
-
-//     for (const book of booksList) {
-//         totalBooks++;
-//     }
-//     return totalBooks;
-// }
-
-function displayStats() {
-    
-}
 
 function displayBooks() {
     const bookcase = document.querySelector(".bookcase");
