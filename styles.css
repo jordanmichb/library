@@ -136,6 +136,55 @@ header svg {
 }
 
 /* * * * * * * * * * * * *
+* Add Book Dialog
+* * * * * * * * * * * * * */
+.add-dialog {
+    border-radius: 10px;
+    align-self: center;
+    margin: 0 auto;
+    padding: 3rem;
+    width: clamp(300px, 40vw, 500px);
+}
+
+.add-dialog form {
+    display: flex;
+    flex-direction: column;
+}
+
+dialog label {
+    font-weight: 500;
+}
+
+dialog label:not([class='check-label']) {
+    margin-bottom: .5rem;
+}
+
+dialog input:not([type='checkbox']) {
+    
+    margin-bottom: 1rem;
+    height: 1.5rem;
+    border-radius: 7px;
+    border: 1px solid;
+}
+
+dialog input[type='checkbox'] {
+    margin: 1rem 0;
+}
+
+dialog input[class='check-label'] {
+    
+}
+
+.add-dialog label:not(.check-label), dialog input:not([type="checkbox"]), dialog button {
+    /* display: block; */
+}
+
+dialog div {
+    margin: .5rem 0 1rem 0;
+    align-self: end;
+}
+
+/* * * * * * * * * * * * *
 * Library
 * * * * * * * * * * * * * */
 .library-container {
