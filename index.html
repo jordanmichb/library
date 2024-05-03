@@ -34,36 +34,37 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-box</title><path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>
             </button>
             <dialog class="add-dialog">
-                <form method="dialog" action="#" method="post">
+                <form id="book-form" method="dialog" action="#" method="post">
                     <label for="title-input">Title</label>
-                    <input type="text" id="title-input" name="title-input">
+                    <input type="text" id="title-input" name="title-input" required>
 
                     <label for="author-input">Author</label>
-                    <input type="text" id="author-input" name="author-input">
+                    <input type="text" id="author-input" name="author-input" required>
 
                     <label for="page-count-input">Page Count</label>
-                    <input type="number" id="page-count-input" name="page-count-input">
+                    <input type="number" id="page-count-input" name="page-count-input" required>
 
                     <label for="genre-input">Genre</label>
-                    <input type="text" id="genre-input" name="genre-input">
+                    <input type="text" id="genre-input" name="genre-input" required>
 
                     <div>
                         <input type="checkbox" id="has-read-input" name="has-read-input">
                         <label class="check-label" for="has-read-input">Completed</label>
                     </div>
 
-                    <button>Add Book</button>
+                    <button id="submit-new-book" type="button">Add Book</button>
                   </form>
             </dialog>
 
             <table class="library">
                 <thead>
-                    <tr>
+                    <tr class="head">
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
                         <th scope="col">Page Count</th>
                         <th scope="col">Genre</th>
                         <th scope="col">Status</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody class="bookcase">
