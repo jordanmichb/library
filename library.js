@@ -32,10 +32,11 @@ function addBookToLibrary() {
     const pages = document.querySelector('#page-count-input').value;
     const genre = document.querySelector('#genre-input').value;
     const read = document.querySelector('#has-read-input').checked;
+    // Remove all form values
     form.reset();
+
     const newBook = new Book(title, author, pages, genre, read);
     booksList.push(newBook);
-    
 
     return newBook
 }
@@ -72,12 +73,22 @@ function displayNewBook(book) {
 
     const del = document.createElement('td');
     const button = document.createElement('button');
+    const delSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const svgPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+    svgPath.setAttributeNS(null, 'd', 'M18,19C18,20.66 16.66,22 15,22H8C6.34,22 5,20.66 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19C6,20.1 6.9,21 8,21H15C16.1,21 17,20.1 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z');
+    delSvg.setAttribute('viewBox', '0 0 24 24');
     button.setAttribute('type', 'button');
     button.classList.add('delete-btn');
-    button.innerText = 'X';
+    //button.innerText = 'X';
+
+
+    //<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18,19C18,20.66 16.66,22 15,22H8C6.34,22 5,20.66 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19C6,20.1 6.9,21 8,21H15C16.1,21 17,20.1 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z" /></svg>
 
     button.addEventListener('click', () => deleteBook(book, bookRow));
 
+    delSvg.appendChild(svgPath);
+    button.appendChild(delSvg);
     del.appendChild(button);
 
     bookRow.appendChild(title);
@@ -91,7 +102,7 @@ function displayNewBook(book) {
 }
 
 /*
-* Event listener for modal to add new books
+* Event listener for modal to add and display new books
 */
 document.querySelector('#submit-new-book').addEventListener('click', () => {
     const newBook = addBookToLibrary();
@@ -102,9 +113,10 @@ document.querySelector('#submit-new-book').addEventListener('click', () => {
 * Delete the book from booksList array and remove its DOM element in table
 */
 function deleteBook(book, bookRow) {
+    // Get book array index and splice to delete
     const idx = booksList.indexOf(book);
-    console.log(idx)
     booksList.splice(idx, 1);
+    // Remove from table
     bookRow.remove();
 }
 
@@ -113,9 +125,8 @@ function deleteBook(book, bookRow) {
 * in the table for each one
 */
 function displayBooks() {
-    for (const book of booksList) {
+    for (const book of booksList)
         displayNewBook(book);
-    }
 }
 
 export { displayBooks };

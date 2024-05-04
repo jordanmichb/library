@@ -20,24 +20,24 @@
 }
 
 :root {
-    --body-background-color: #013409;
+    --body-background-color: #e3e3ed;
 
-    --header-background-color: #e3e3ed;
-    --header-border: 2px solid #6e4f32;
+    --header-background-color: #003008;
+    --header-border: 2px solid #473320;
 
-    --aside-background-color: #e3e3ed;
-    --aside-border: 2px solid #6e4f32;
+    --aside-background-color: rgba(0, 41, 7, 0.1);
+    --aside-border: 2px solid #473320;
 
-    --library-background-color: #e3e3ed;
-    --library-header-color: rgba(110, 79, 50, 0.8);
-    --library-border: 2px solid #6e4f32;
-    --library-even-color: rgba(110, 79, 50, 0.2);
+    --library-background-color: #f5f5fc;
+    --library-header-color: #003008;
+    --library-border: 2px solid #473320;
+    --library-even-color: rgba(0, 41, 7, 0.1);
 
-    --add-btn-color: #e3e3ed;
+    --add-btn-color: #015910;
 
-    --card-background-color: #d2e1cc;
-    --card-border-color: black;
-    --text-color: black;
+    --box-shadow-color: #9d9d9d;
+    --text-color-light: #e9e9e9;
+    --text-color-dark: #232323;
 }
 
 * {
@@ -73,12 +73,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: .5rem;
     background-color: var(--header-background-color);
     margin-bottom: 1rem;
-    /* border-radius: 10px; */
-    color: var(--text-color);
-    box-shadow: 2px 2px 10px #0c0c0c;
+    color: var(--text-color-light);
+    box-shadow: 2px 2px 10px var(--box-shadow-color);
     border-bottom: var(--header-border);
 }
 
@@ -91,6 +90,10 @@ header {
 
 header svg {
     vertical-align: middle;
+}
+
+header svg path {
+    fill: #e9e9e9;
 }
 
 .login {
@@ -108,9 +111,9 @@ header svg {
     transition: width 350ms, padding 350ms, opacity 350ms;
     background-color: var(--aside-background-color);
     border: var(--aside-border);
-    border-radius: 10px;
-    color: var(--text-color);
-    box-shadow: 2px 2px 10px #0c0c0c;
+    border-radius: 5px;
+    color: var(--text-color-dark);
+    box-shadow: 2px 2px 10px var(--box-shadow-color);
 }
 
 .info.expand {
@@ -137,18 +140,24 @@ header svg {
 * Add Book Button
 * * * * * * * * * * * * * */
 .add-btn {
+    color: var(--text-color-dark);
+    font-weight: 500;
     align-self: end;
     margin-right: 100px;
     margin-bottom: 20px;
-    border: none;
-    background: none;
+    padding: .2em 1em;
+    background: rgba(0, 41, 7, 0.1);
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px var(--box-shadow-color);
 }
 
 .add-btn svg {
-    cursor: pointer;
     vertical-align: middle;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: .5em;
 }
 
 .add-btn svg path {
@@ -161,11 +170,22 @@ header svg {
 * Add Book Dialog
 * * * * * * * * * * * * * */
 .add-dialog {
-    border-radius: 10px;
+    border-radius: 5px;
     align-self: center;
     margin: 0 auto;
     padding: 3rem;
     width: clamp(300px, 40vw, 500px);
+}
+
+#close-modal {
+    width: min-content;
+    align-self: end;
+    margin: -2.5rem -2rem 20px 0;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 .add-dialog form {
@@ -222,16 +242,18 @@ dialog div {
     flex: 0;
     height: 100%;
     border: var(--library-border);
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px #0c0c0c;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px var(--box-shadow-color);
 }
 
 .library {
     border-spacing: 0;
+    color: var(--text-color-dark);
 }
 
 thead {
     background-color: var(--library-header-color);
+    color: var(--text-color-light);
 }
 
 thead th {
@@ -239,16 +261,20 @@ thead th {
 }
 
 thead th:first-child {
-    border-top-left-radius: 8px;
+    border-top-left-radius: 3px;
 }
 
 thead th:last-child {
-    border-top-right-radius: 8px;
+    border-top-right-radius: 3px;
 }
 
 thead th, td {
     padding: 1rem 0;
     text-align: center;
+}
+
+thead th {
+    padding: .25rem;
 }
 
 tr {
@@ -261,7 +287,16 @@ tr:nth-child(even) {
 }
 
 tr:not([class='head']):hover {
-    outline: 2px solid #ec8f00;
+    outline: 2px solid #473320;
+}
+
+tr svg {
+    /* display: inline-block; */
+    width: 1.5rem;
+    height: 1.5rem;
+}
+tr svg path {
+    fill: red;
 }
 /* * * * * * * * * * * * *
 * Card
