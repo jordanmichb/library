@@ -9,7 +9,10 @@ function Book(title, author, pageCount, genre, hasRead) {
     this.hasRead = hasRead;
 }
 
-const book1 = new Book('Book1', 'Jordan Ballard', 900, 'Fantasy', true);
+/*
+* Starter books to populate table
+*/
+const book1 = new Book('Eye of the World', 'Robert Jordan', 782, 'Fantasy', true);
 const book2 = new Book('Book2', 'Trenten Nash', 407, 'Horror', false);
 const book3 = new Book('Book3', 'Trier Perry', 564, 'Action', true);
 const book4 = new Book('Book4', 'Jennifer Satterfield', 3623, 'Adventure', true);
@@ -104,9 +107,11 @@ function displayNewBook(book) {
 /*
 * Event listener for modal to add and display new books
 */
-document.querySelector('#submit-new-book').addEventListener('click', () => {
+document.querySelector('#submit-book').addEventListener('click', () => {
+    const dialog = document.querySelector('.add-dialog');
     const newBook = addBookToLibrary();
     displayNewBook(newBook);
+    dialog.close();
 })
 
 /*
