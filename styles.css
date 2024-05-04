@@ -1,20 +1,13 @@
 @font-face {
-    font-family: 'roboto';
-    src: url('./fonts/roboto-regular-webfont.woff2') format('woff2');
+    font-family: 'glacial indifference';
+    src: url('./fonts/glacialindifference-regular-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'roboto';
-    src: url('./fonts/roboto-medium-webfont.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'roboto';
-    src: url('./fonts/roboto-bold-webfont.woff2') format('woff2');
+    font-family: 'glacial indifference';
+    src: url('./fonts/glacialindifference-bold-webfont.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
 }
@@ -27,6 +20,7 @@
 
     --aside-background-color: rgba(0, 41, 7, 0.1);
     --aside-border: 0px solid #473320;
+    --aside-list-border: 1px solid rgba(0, 41, 7, 0.1);
 
     --library-background-color: #f5f5fc;
     --library-header-color: #003008;
@@ -48,7 +42,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'roboto';
+    font-family: 'glacial indifference';
+    letter-spacing: .05rem;
 }
 
 body {
@@ -139,6 +134,8 @@ header svg path {
 
 .info li {
     white-space: nowrap;
+    padding: .5rem 0;
+    border-bottom: var(--aside-list-border);
 }
 
 /* * * * * * * * * * * * *
