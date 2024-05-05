@@ -320,6 +320,11 @@ tr:nth-child(even) {
     background-color: var(--library-even-color);
 }
 
+.read-btn {
+    padding: .25em 1em;
+    cursor: pointer;
+}
+
 .delete-btn.outer {
     background: none;
     border: none;

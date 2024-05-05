@@ -1,4 +1,4 @@
-import { updateStats, displayStats } from './stats.js'
+import { updateStats, displayStats, updateStatsToggleRead } from './stats.js'
 
 // List of all books in the library
 const booksList = [];
@@ -73,26 +73,32 @@ function displayNewBook(book) {
     genre.textContent = book.genre;
 
     const hasRead = document.createElement('td');
+    const readBtn = document.createElement('button');
+
     hasRead.classList.add('has-read');
-    hasRead.textContent = book.hasRead ? 'Completed' : 'Not Finished';
+    readBtn.classList.add('read-btn');
+    readBtn.textContent = book.hasRead ? 'Read' : 'Not Read';
+    hasRead.appendChild(readBtn);
+
+    readBtn.addEventListener('click', (e) => toggleHasRead(e, book));
 
     const del = document.createElement('td');
-    const button = document.createElement('button');
+    const delBtn = document.createElement('button');
     const delSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     const svgPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
     svgPath.setAttributeNS(null, 'd', 'M18,19C18,20.66 16.66,22 15,22H8C6.34,22 5,20.66 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19C6,20.1 6.9,21 8,21H15C16.1,21 17,20.1 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z');
     delSvg.setAttribute('viewBox', '0 0 24 24');
-    button.setAttribute('type', 'button');
+    delBtn.setAttribute('type', 'button');
     svgPath.classList.add('delete-btn');
     delSvg.classList.add('delete-btn');
-    button.classList.add('delete-btn', 'outer');
+    delBtn.classList.add('delete-btn', 'outer');
 
-    button.addEventListener('click', (e) => deleteBook(e, book, bookRow));
+    delBtn.addEventListener('click', (e) => deleteBook(e, book, bookRow));
 
     delSvg.appendChild(svgPath);
-    button.appendChild(delSvg);
-    del.appendChild(button);
+    delBtn.appendChild(delSvg);
+    del.appendChild(delBtn);
 
     bookRow.appendChild(title);
     bookRow.appendChild(author);
@@ -117,7 +123,23 @@ document.querySelector('#submit-book').addEventListener('click', (e) => {
 })
 
 /*
-* Callback function for button event listener
+* Callback function for read button event listener
+* Toggle has read or has not read
+*/
+function toggleHasRead(e, book) {
+    if (e.target.innerText === 'Read') {
+        e.target.innerText = 'Not Read';
+        book.hasRead = false;
+    } else {
+        e.target.innerText = 'Read';
+        book.hasRead = true;
+    }
+    updateStatsToggleRead(book);
+    displayStats();          
+}
+
+/*
+* Callback function for delete button event listener
 * Delete the book from booksList array and remove its DOM element in table
 */
 function deleteBook(e, book, bookRow) {

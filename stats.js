@@ -23,12 +23,12 @@ function updateStats(book, target) {
         stats.totalBooks = stats.totalBooks + 1;
         // Increment read or unread depending on status
         book.hasRead ? stats.booksRead = stats.booksRead + 1
-                    : stats.booksUnread = stats.booksUnread + 1;
+                     : stats.booksUnread = stats.booksUnread + 1;
         // Add page count to total pages
         stats.totalPages = stats.totalPages + Number(book.pageCount);
         // Increment read or unread depending on status
         book.hasRead ? stats.pagesRead = stats.pagesRead + Number(book.pageCount)
-                    : stats.pagesUnread = stats.pagesUnread + Number(book.pageCount)
+                     : stats.pagesUnread = stats.pagesUnread + Number(book.pageCount)
 
         // If author/genre is already in object, increment its value
         // Else add the new author/genre and increment total
@@ -50,12 +50,12 @@ function updateStats(book, target) {
         stats.totalBooks = stats.totalBooks - 1;
 
         book.hasRead ? stats.booksRead = stats.booksRead - 1
-                    : stats.booksUnread = stats.booksUnread - 1;
+                     : stats.booksUnread = stats.booksUnread - 1;
 
         stats.totalPages = stats.totalPages - Number(book.pageCount);
 
         book.hasRead ? stats.pagesRead = stats.pagesRead - Number(book.pageCount)
-                    : stats.pagesUnread = stats.pagesUnread - Number(book.pageCount)
+                     : stats.pagesUnread = stats.pagesUnread - Number(book.pageCount)
 
         // If only one left of author/genre, delete key and decrement total
         if (authors[book.author] === 1) {
@@ -74,6 +74,22 @@ function updateStats(book, target) {
     }
 }
 
+function updateStatsToggleRead(book) {
+    if (book.hasRead) {
+        stats.booksRead = stats.booksRead + 1;
+        stats.booksUnread = stats.booksUnread - 1;
+
+        stats.pagesRead = stats.pagesRead + book.pageCount;
+        stats.pagesUnread = stats.pagesUnread - book.pageCount;
+    } else {
+        stats.booksUnread = stats.booksUnread + 1;
+        stats.booksRead = stats.booksRead - 1;
+
+        stats.pagesUnread = stats.pagesUnread + book.pageCount;
+        stats.pagesRead = stats.pagesRead - book.pageCount;
+    }
+}
+
 /*
 * Change each stats DOM element to display current stats
 */
@@ -88,4 +104,4 @@ function displayStats() {
     document.querySelector('#total-genres').innerText = stats.totalGenres;
 }
 
-export { updateStats, displayStats }
+export { updateStats, displayStats, updateStatsToggleRead }
