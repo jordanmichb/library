@@ -140,10 +140,13 @@ header svg path {
 }
 
 .info li {
-    /* font-style: italic; */
     white-space: nowrap;
     padding: 1rem 0;
     border-bottom: var(--aside-list-border);
+}
+
+.info li span {
+    font-weight: bold;
 }
 
 /* * * * * * * * * * * * *
