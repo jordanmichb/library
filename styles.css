@@ -34,8 +34,8 @@
     --library-border: 0px solid #473320;
     --library-even-color: #dcdfde;
 
-    --add-btn-color: #dcdfde;
-    --add-btn-border: none;
+    --btn-background-color: #dcdfde;
+    --btn-border: none;
 
     --dialog-background-color: #eeeef3;
     --dialog-border: 3px solid #003008;
@@ -66,6 +66,15 @@ main {
     flex: 1;
     padding: 16px;
     padding-top: 32px;
+}
+
+button {
+    border: var(--btn-border);
+    background-color: var(--btn-background-color);
+    box-shadow: 1px 1px 5px var(--box-shadow-color);
+    cursor: pointer;
+    border-radius: 5px;
+    color: var(--text-color-dark)
 }
 
 svg {
@@ -154,15 +163,9 @@ header svg path {
 * Add Book Button
 * * * * * * * * * * * * * */
 .add-btn {
-    color: var(--text-color-dark);
     font-size: 1.1rem;
     margin-bottom: 48px;
     padding: .2em 1em;
-    background: var(--add-btn-color);
-    border: var(--add-btn-border);
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 1px 1px 5px var(--box-shadow-color);
 }
 
 .add-btn:hover {
@@ -322,7 +325,10 @@ tr:nth-child(even) {
 
 .read-btn {
     padding: .25em 1em;
-    cursor: pointer;
+}
+
+.read-btn:hover {
+    background: rgba(0, 41, 7, 0.2);
 }
 
 .delete-btn.outer {
@@ -332,6 +338,7 @@ tr:nth-child(even) {
     transition: transform 150ms;
     width: 2rem;
     height: 2rem;
+    box-shadow: none;
 }
 
 .delete-btn:hover {
