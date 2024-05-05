@@ -1,3 +1,5 @@
+import { updateStats, displayStats } from './stats.js'
+
 // List of all books in the library
 const booksList = [];
 
@@ -17,7 +19,7 @@ const book2 = new Book('Book2', 'Trenten Nash', 407, 'Horror', false);
 const book3 = new Book('Book3', 'Trier Perry', 564, 'Action', true);
 const book4 = new Book('Book4', 'Jennifer Satterfield', 3623, 'Adventure', true);
 const book5 = new Book('Book5', 'Meghan Ballard', 765, 'Fantasy', false);
-const book6 = new Book('Book6', 'Kitty Cat', 876, 'Action', true);
+const book6 = new Book('Book6', 'Robert Jordan', 876, 'Action', true);
 booksList.push(book1);
 booksList.push(book2);
 booksList.push(book3);
@@ -82,13 +84,11 @@ function displayNewBook(book) {
     svgPath.setAttributeNS(null, 'd', 'M18,19C18,20.66 16.66,22 15,22H8C6.34,22 5,20.66 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19C6,20.1 6.9,21 8,21H15C16.1,21 17,20.1 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z');
     delSvg.setAttribute('viewBox', '0 0 24 24');
     button.setAttribute('type', 'button');
-    button.classList.add('delete-btn');
-    //button.innerText = 'X';
+    svgPath.classList.add('delete-btn');
+    delSvg.classList.add('delete-btn');
+    button.classList.add('delete-btn', 'outer');
 
-
-    //<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18,19C18,20.66 16.66,22 15,22H8C6.34,22 5,20.66 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19C6,20.1 6.9,21 8,21H15C16.1,21 17,20.1 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z" /></svg>
-
-    button.addEventListener('click', () => deleteBook(book, bookRow));
+    button.addEventListener('click', (e) => deleteBook(e, book, bookRow));
 
     delSvg.appendChild(svgPath);
     button.appendChild(delSvg);
@@ -107,17 +107,22 @@ function displayNewBook(book) {
 /*
 * Event listener for modal to add and display new books
 */
-document.querySelector('#submit-book').addEventListener('click', () => {
+document.querySelector('#submit-book').addEventListener('click', (e) => {
     const dialog = document.querySelector('.add-dialog');
     const newBook = addBookToLibrary();
     displayNewBook(newBook);
+    updateStats(newBook, e.target);
+    displayStats();
     dialog.close();
 })
 
 /*
+* Callback function for button event listener
 * Delete the book from booksList array and remove its DOM element in table
 */
-function deleteBook(book, bookRow) {
+function deleteBook(e, book, bookRow) {
+    updateStats(book, e.target);
+    displayStats();
     // Get book array index and splice to delete
     const idx = booksList.indexOf(book);
     booksList.splice(idx, 1);
@@ -130,8 +135,11 @@ function deleteBook(book, bookRow) {
 * in the table for each one
 */
 function displayBooks() {
-    for (const book of booksList)
+    for (const book of booksList) {
         displayNewBook(book);
+        updateStats(book);
+    }
+    displayStats();
 }
 
 export { displayBooks };

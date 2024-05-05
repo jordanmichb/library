@@ -12,6 +12,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'glacial indifference';
+    src: url('./fonts/glacialindifference-italic-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+
 :root {
     --body-background-color: #e3e3ed;
 
@@ -133,8 +140,9 @@ header svg path {
 }
 
 .info li {
+    /* font-style: italic; */
     white-space: nowrap;
-    padding: .5rem 0;
+    padding: 1rem 0;
     border-bottom: var(--aside-list-border);
 }
 
@@ -308,7 +316,7 @@ tr:nth-child(even) {
     background-color: var(--library-even-color);
 }
 
-.delete-btn {
+.delete-btn.outer {
     background: none;
     border: none;
     cursor: pointer;
