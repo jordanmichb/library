@@ -56,7 +56,6 @@
 body {
     min-height: 100vh;
     background-color: var(--body-background-color);
-    /* background-image: var(--body-background-image); */
     display: flex;
     flex-direction: column;
 }
@@ -97,10 +96,18 @@ header {
     border-bottom: var(--header-border);
 }
 
+header button {
+    box-shadow: none;
+}
+
+.login {
+    padding: .25em 1em;
+    font-weight: bold;
+    margin-left: auto;
+}
+
 .menu-btn {
     background: none;
-    border: none;
-    cursor: pointer;
     margin-right: auto;
 }
 
@@ -110,11 +117,6 @@ header svg {
 
 header svg path {
     fill: #e9e9e9;
-}
-
-.login {
-    margin-left: auto;
-    cursor: pointer;
 }
 
 /* * * * * * * * * * * * *

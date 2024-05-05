@@ -58,6 +58,7 @@ function updateStats(book, target) {
                      : stats.pagesUnread = stats.pagesUnread - Number(book.pageCount)
 
         // If only one left of author/genre, delete key and decrement total
+        // Else decrement number of that author/genre
         if (authors[book.author] === 1) {
             delete authors[book.author];
             stats.totalAuthors = stats.totalAuthors - 1;
@@ -74,14 +75,18 @@ function updateStats(book, target) {
     }
 }
 
+/*
+* Called whena book's read statuss is toggled
+*/
 function updateStatsToggleRead(book) {
+    // Toggled to read
     if (book.hasRead) {
         stats.booksRead = stats.booksRead + 1;
         stats.booksUnread = stats.booksUnread - 1;
 
         stats.pagesRead = stats.pagesRead + book.pageCount;
         stats.pagesUnread = stats.pagesUnread - book.pageCount;
-    } else {
+    } else { // Toggled to unread
         stats.booksUnread = stats.booksUnread + 1;
         stats.booksRead = stats.booksRead - 1;
 

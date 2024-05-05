@@ -3,6 +3,7 @@ import { updateStats, displayStats, updateStatsToggleRead } from './stats.js'
 // List of all books in the library
 const booksList = [];
 
+// Book object constructor
 function Book(title, author, pageCount, genre, hasRead) {
     this.title = title;
     this.author = author;
@@ -14,12 +15,12 @@ function Book(title, author, pageCount, genre, hasRead) {
 /*
 * Starter books to populate table
 */
-const book1 = new Book('Eye of the World', 'Robert Jordan', 782, 'Fantasy', true);
-const book2 = new Book('Book2', 'Trenten Nash', 407, 'Horror', false);
-const book3 = new Book('Book3', 'Trier Perry', 564, 'Action', true);
-const book4 = new Book('Book4', 'Jennifer Satterfield', 3623, 'Adventure', true);
-const book5 = new Book('Book5', 'Meghan Ballard', 765, 'Fantasy', false);
-const book6 = new Book('Book6', 'Robert Jordan', 876, 'Action', true);
+const book1 = new Book('Farenheit 451', 'Ray Bradbury', 156, 'Science Fiction', true);
+const book2 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 423, 'Fantasy', false);
+const book3 = new Book('To Kill a Mockingbird', 'Harper Lee', 281, 'Southern Gothic', false);
+const book4 = new Book('The Stand', 'Stephen King', 1152, 'Horror', true);
+const book5 = new Book('The Lion, the Witch, and the Wardrobe', 'C.S. Lewis', 172, 'Fantasy', true);
+const book6 = new Book('The Eye of the World', 'Robert Jordan', 782, 'Fantasy', true);
 booksList.push(book1);
 booksList.push(book2);
 booksList.push(book3);
@@ -51,50 +52,52 @@ function addBookToLibrary() {
 */
 function displayNewBook(book) {
     const bookcase = document.querySelector(".bookcase");
-
+    // Create table row
     const bookRow = document.createElement("tr");
     bookRow.classList.add('book', 'card');
-
+    // Create title td
     const title = document.createElement('th');
     title.setAttribute('scope', 'row');
     title.classList.add('book-title');
     title.textContent = book.title;
-
+    // Create author td
     const author = document.createElement('td');
     author.classList.add('author');
     author.textContent = book.author;
-
+    //Create page count td
     const pageCount = document.createElement('td');
     pageCount.classList.add('page-count');
     pageCount.textContent = book.pageCount;
-
+    // Create genre td
     const genre = document.createElement('td');
     genre.classList.add('genre');
     genre.textContent = book.genre;
-
-    const hasRead = document.createElement('td');
+    // Create has read td with button
     const readBtn = document.createElement('button');
-
-    hasRead.classList.add('has-read');
     readBtn.classList.add('read-btn');
     readBtn.textContent = book.hasRead ? 'Read' : 'Not Read';
-    hasRead.appendChild(readBtn);
-
     readBtn.addEventListener('click', (e) => toggleHasRead(e, book));
 
-    const del = document.createElement('td');
-    const delBtn = document.createElement('button');
-    const delSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const hasRead = document.createElement('td');
+    hasRead.classList.add('has-read');
+    
+    hasRead.appendChild(readBtn);
+
+    // Create delete td with button and SVG
     const svgPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-
     svgPath.setAttributeNS(null, 'd', 'M18,19C18,20.66 16.66,22 15,22H8C6.34,22 5,20.66 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19C6,20.1 6.9,21 8,21H15C16.1,21 17,20.1 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z');
-    delSvg.setAttribute('viewBox', '0 0 24 24');
-    delBtn.setAttribute('type', 'button');
     svgPath.classList.add('delete-btn');
-    delSvg.classList.add('delete-btn');
-    delBtn.classList.add('delete-btn', 'outer');
 
+    const delSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    delSvg.setAttribute('viewBox', '0 0 24 24');
+    delSvg.classList.add('delete-btn');
+
+    const delBtn = document.createElement('button');
+    delBtn.setAttribute('type', 'button');
+    delBtn.classList.add('delete-btn', 'outer');
     delBtn.addEventListener('click', (e) => deleteBook(e, book, bookRow));
+
+    const del = document.createElement('td');  
 
     delSvg.appendChild(svgPath);
     delBtn.appendChild(delSvg);
