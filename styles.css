@@ -205,6 +205,7 @@ header svg path {
     border: none;
     background: none;
     cursor: pointer;
+    box-shadow: none;
 }
 
 .add-dialog form {
@@ -247,14 +248,12 @@ dialog div {
 }
 
 #submit-book {
-    color: var(--text-color-dark);
-    font-weight: 500;
-    padding: .2em 1em;
-    background: rgba(0, 41, 7, 0.1);
-    border: var(--add-btn-border);
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 3px 3px 8px var(--box-shadow-color);
+    font-weight: bold;
+    padding: .75em 0;
+}
+
+#submit-book:hover {
+    background: rgba(0, 41, 7, 0.2);
 }
 
 /* * * * * * * * * * * * *
