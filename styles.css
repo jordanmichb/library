@@ -25,16 +25,16 @@
     --header-background-color: #003008;
     --header-border: 0px solid #473320;
 
-    --aside-background-color: rgba(0, 41, 7, 0.1);
+    --aside-background-color: #dcdfde;
     --aside-border: 0px solid #473320;
     --aside-list-border: 1px solid rgba(0, 41, 7, 0.1);
 
     --library-background-color: #f5f5fc;
     --library-header-color: #003008;
     --library-border: 0px solid #473320;
-    --library-even-color: rgba(0, 41, 7, 0.1);
+    --library-even-color: #dcdfde;
 
-    --add-btn-color: rgba(0, 41, 7, 0.1);
+    --add-btn-color: #dcdfde;
     --add-btn-border: none;
 
     --dialog-background-color: #eeeef3;
@@ -121,6 +121,7 @@ header svg path {
     border-radius: 5px;
     color: var(--text-color-dark);
     box-shadow: 2px 2px 10px var(--box-shadow-color);
+    position: absolute;
 }
 
 .info.expand {
